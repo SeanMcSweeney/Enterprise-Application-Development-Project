@@ -38,7 +38,7 @@ body, html, #root, .app, .container {
  background: rgba(255, 255, 255, 1);
 }
 
-.submit {
+.submitButton {
  padding-top: 16px;
 }
 

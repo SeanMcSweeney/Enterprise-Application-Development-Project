@@ -1,5 +1,5 @@
 import React from 'react';
-import UserStorage from './stored/UserStorage';
+import UserStore from './stored/UserStore';
 import { observer } from 'mobx-react';
 import LoginForm from './LoginForm';
 import SubmitButton from './SubmitButton';
@@ -21,21 +21,21 @@ class App extends React.Component{
       let result = await res.json();
 
       if (result && result.success){
-        UserStorage.loading = false;
-        UserStorage.isLogged = true;
-        UserStorage.username = result.username;
+        UserStore.loading = false;
+        UserStore.isLoggedIn = true;
+        UserStore.username = result.username;
       }
 
       else {
-        UserStorage.loading = false;
-        UserStorage.isLoggedIn = false;
+        UserStore.loading = false;
+        UserStore.isLoggedIn = false;
       }
 
     }
 
     catch(e){
-      UserStorage.loading = false;
-      UserStorage.isLoggedIn = false;
+      UserStore.loading = false;
+      UserStore.isLoggedIn = false;
     }
 
   }
@@ -55,9 +55,10 @@ class App extends React.Component{
       let result = await res.json();
 
       if (result && result.success){
-        UserStorage.isLoggedIn = false;
-        UserStorage.username = '';
+        UserStore.isLoggedIn = false;
+        UserStore.username = '';
       }
+      
     }
 
     catch(e){
@@ -67,7 +68,7 @@ class App extends React.Component{
   }
   render() {
 
-    if (UserStorage.loading) {
+    if (UserStore.loading) {
       return (
         <div className="app">
           <div className="container">
@@ -78,16 +79,16 @@ class App extends React.Component{
     }
 
     else {
-      if (UserStorage.isLoggedIn) {
+      if (UserStore.isLoggedIn) {
         return (
           <div className="app">
             <div className="container">
-              Welcome {UserStorage.username}
+              Welcome {UserStore.username}
 
               <SubmitButton
                 text={'Log Out'}
                 disabled={false}
-                OnClick={() => this.doLogout() }
+                onClick={ () => this.doLogout() }
               />
             </div>
           </div>
@@ -99,8 +100,7 @@ class App extends React.Component{
       <div className="app">
         <div className="container">
           Log In
-          <LoginForm
-          />
+          <LoginForm />
         </div>
       </div>
     );

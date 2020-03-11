@@ -1,7 +1,7 @@
 import React from 'react';
 import InputField from './InputField';
 import SubmitButton from './SubmitButton';
-import UserStorage from './stored/UserStorage';
+import UserStore from './stored/UserStore';
 
 class LoginForm extends React.Component{
 
@@ -32,7 +32,7 @@ class LoginForm extends React.Component{
         })
     }
 
-    async userLogin() {
+    async doLogin() {
 
         if (!this.state.username) {
             return;
@@ -51,7 +51,7 @@ class LoginForm extends React.Component{
                 method: 'post',
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application.json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     username: this.state.username,
@@ -61,8 +61,8 @@ class LoginForm extends React.Component{
 
             let result = await res.json();
             if (result && result.success) {
-                UserStorage.isLoggedIn = true;
-                UserStorage.username = result.username;
+                UserStore.isLoggedIn = true;
+                UserStore.username = result.username;
             }
 
             else if (result && result.success === false) {
@@ -99,7 +99,7 @@ class LoginForm extends React.Component{
                 <SubmitButton
                     text='Login'
                     disabled={this.state.buttonDisabled}
-                    onClick={ () => this.userLogin() }
+                    onClick={ () => this.doLogin() }
                 />
 
             </div>
