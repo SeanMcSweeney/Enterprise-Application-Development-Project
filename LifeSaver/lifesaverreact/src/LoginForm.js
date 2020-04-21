@@ -81,28 +81,33 @@ class LoginForm extends React.Component{
 
         return (
             <div className="login">
-
-                <InputField
-                    type='text'
-                    placeholder='Username'
-                    value={this.state.username ? this.state.username : ''}
-                    onChange={ (val) => this.setInputValue('username', val) }
-                />
-
-                <InputField
-                    type='password'
-                    placeholder='Password'
-                    value={this.state.password ? this.state.password : ''}
-                    onChange={ (val) => this.setInputValue('password', val) }
-                />
-
-                <SubmitButton
-                    text='Login'
-                    disabled={this.state.buttonDisabled}
-                    onClick={ () => this.doLogin() }
-                />
-
-            </div>
+                <p className="logintitle"> Level Images </p>
+                    <InputField
+                        type='text'
+                        placeholder='Username'
+                        value={this.state.username ? this.state.username : ''}
+                        onChange={ (val) => this.setInputValue('username', val) }
+                    />
+                    <InputField
+                        type='password'
+                        placeholder='Password'
+                        value={this.state.password ? this.state.password : ''}
+                        onChange={ (val) => this.setInputValue('password', val) }
+                    />
+                    <br></br>
+                    <SubmitButton
+                        text='Login'
+                        disabled={this.state.buttonDisabled}
+                        onClick={ () => this.doLogin() }
+                    />
+                    <br></br> 
+                    <p color="white">Don't have an account? Register here</p>
+                    <SubmitButton
+                        text='Register'
+                        disabled={this.state.buttonDisabled}
+                        onClick={ () => this.doLogin() }
+                    />     
+            </div>        
             );
         }
     }

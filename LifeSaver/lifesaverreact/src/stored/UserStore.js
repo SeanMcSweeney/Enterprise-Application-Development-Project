@@ -10,6 +10,7 @@ class UserStore {
 
             loading: true,
             isLoggedIn: false,
+            admin: false,
             username: ''
 
         })

@@ -6,6 +6,8 @@ class Router {
         this.login(app, db);
         this.logout(app, db);
         this.isLoggedIn(app, db);
+        this.Register(app, db);
+        this.CheckAdmin(app, db);
     }
 
     login(app, db){
@@ -128,6 +130,34 @@ class Router {
             }
 
         });
+
+    }
+
+    Register(app, db){
+        app.post('/Register', (req, res) => {
+            let email = req.body.email;
+            let password = req.body.password;
+            let username = req.body.username;
+
+            db.query('insert into user(username,password,email) values(' + username + ',' + password + '' + email + ')', (err, data, fields) => {
+                if(error) throw error;
+                res.send(JSON.stringify(results));
+                });
+            });
+
+    }
+
+    CheckAdmin(app, db){
+        app.post('/CheckAdmin', (req, res) => {
+            let email = req.body.email;
+            let password = req.body.password;
+            let username = req.body.username;
+
+            db.query('SELECT * FROM user WHERE username = ? LIMIT 1'), (err, data, fields) => {
+                if(error) throw error;
+                res.send(JSON.stringify(results));
+                };
+            });
 
     }
 

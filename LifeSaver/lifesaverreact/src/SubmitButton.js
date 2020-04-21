@@ -6,7 +6,7 @@ render() {
         <div className="submitButton">
 
             <button
-                className='btn'
+                className='subbtn'
                 disabled={this.props.disabled}
                 onClick={ () => this.props.onClick() }
             >
