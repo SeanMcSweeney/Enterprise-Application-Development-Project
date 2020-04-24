@@ -1,5 +1,7 @@
 const bcrypt = require('bcrypt');
 
+/* If SQL database is located at server side, React.js have nothing to do with SQL injection attacks because React.js is outside of SQL database server trust boundary */
+
 class Router {
 
     constructor(app, db){
@@ -182,14 +184,6 @@ class Router {
             let oldpassword = req.body.passwordold;
             let newpassword = req.body.passwordnew;
             let newpasswordencrypted = bcrypt.hashSync(req.body.passwordnew, 9);
-
-            if (oldpassword | newpassword > 12){
-                res.json ({
-                    success: false,
-                    msg: 'Your password is too long'
-                })
-            }
-            else{
                 db.query('SELECT * FROM user WHERE id = ? LIMIT 1', cols, (err, data, fields) => {
                     if (data && data.length === 1) {
                     bcrypt.compare(oldpassword, data[0].password, (bcryptErr, verified) => {
@@ -224,7 +218,6 @@ class Router {
                     });
                 }
             });
-        }
     });
 }
 

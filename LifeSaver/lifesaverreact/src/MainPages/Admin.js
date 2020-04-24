@@ -21,6 +21,7 @@ class Admin extends React.Component{
         }
     }
 
+    /* searches for user using fetch*/
     async SearchUser() {
 
         if (!this.state.username){
@@ -47,15 +48,12 @@ class Admin extends React.Component{
             AllUsers.email = result.email;
             AllUsers.admin = result.admin;
             AllUsers.aboutme = result.aboutme;
-            this.state.username = AllUsers.username;
-            this.state.email = AllUsers.email;
-            this.state.admin = AllUsers.admin;
-            this.state.aboutme = AllUsers.aboutme;
+            console.log(AllUsers.aboutme);
             alert("user found");
         }
     
         else {
-            console.log("error user not found")
+            console.log("error user not found");
         }
     
         }
@@ -64,7 +62,7 @@ class Admin extends React.Component{
         console.log("404 error")
         }
     }
-
+    /* deletes user using fetch*/
     async deleteUser(){
         try {
 
@@ -96,6 +94,7 @@ class Admin extends React.Component{
                 this.state.admin = '';
                 this.state.aboutme = '';
                 alert("user deleted");
+                window.location.reload();
             }
     
             else {
@@ -109,23 +108,19 @@ class Admin extends React.Component{
         console.log("404 error")
         }
     }
-
+    /* edit user using fetch*/
     async editUser(){
         try {
 
-        if (!AllUsers.username){
-            alert("username empty")
-            return;
-        }
-        else if(!AllUsers.email){
+        if(!this.state.email){
             alert("email empty")
             return;
         }
-        else if(!AllUsers.admin){
+        else if(!this.state.admin){
             alert("admin empty")
             return;
         }
-        else if(!AllUsers.aboutme){
+        else if(!this.state.aboutme){
             alert("aboutme empty")
             return;
         }
@@ -137,8 +132,8 @@ class Admin extends React.Component{
             'Content-Type' : 'application/json'
             },
             body: JSON.stringify({
-                username: this.state.username,
-                admin: this.state.username,
+                username: AllUsers.username,
+                admin: this.state.admin,
                 aboutme: this.state.aboutme,
                 email: this.state.email
             })
@@ -151,11 +146,8 @@ class Admin extends React.Component{
                 AllUsers.email = result.email;
                 AllUsers.admin = result.admin;
                 AllUsers.aboutme = result.aboutme;
-                this.state.username = AllUsers.username;
-                this.state.email = AllUsers.email;
-                this.state.admin = AllUsers.admin;
-                this.state.aboutme = AllUsers.aboutme;
                 alert("user changed");
+                window.location.reload();
             }
     
             else {
@@ -200,25 +192,47 @@ class Admin extends React.Component{
                 </Jumbotron>
                 <br></br>
                 <Jumbotron>
-                    <table className="table table-hover">
+                <p className="heading">User Info</p>
+                <table className="table">
                     <thead>
                         <tr>
                             <th>Username</th>
                             <th>Email</th>
                             <th>About</th>
                             <th>Admin</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <tr>
                         <td>
                         <p>{AllUsers.username}</p>
                         </td>
                         <td>
+                        <p>{AllUsers.email}</p>
+                        </td>
+                        <td>
+                        <p>{AllUsers.aboutme}</p>  
+                        </td>
+                        <td>
+                        <p>{AllUsers.admin}</p> 
+                        </td>
+                        <td>
+                        <SubmitButton
+                        text='Delete User'
+                        disabled={this.state.buttonDisabled}
+                        onClick={ () => this.deleteUser() }
+                        /> 
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        <p>Not Changeable</p>
+                        </td>
+                        <td>
                         <InputField
                         type='text'
-                        placeholder=' User email'
+                        placeholder='New user email'
                         value={this.state.email ? this.state.email : ''}
                         onChange={ (val) => this.setInputValue('email', val) }
                         /> 
@@ -226,7 +240,7 @@ class Admin extends React.Component{
                         <td>
                         <InputField
                         type='text'
-                        placeholder=' User about'
+                        placeholder='New user about'
                         value={this.state.aboutme ? this.state.aboutme : ''}
                         onChange={ (val) => this.setInputValue('aboutme', val) }
                         />    
@@ -234,25 +248,19 @@ class Admin extends React.Component{
                         <td>
                         <InputField
                         type='text'
-                        placeholder=' User admin'
+                        placeholder='New user admin (yes/no)'
                         value={this.state.admin ? this.state.admin : ''}
                         onChange={ (val) => this.setInputValue('admin', val) }
                         />    
                         </td>
                         <td>
                         <SubmitButton
-                        text='Find User'
+                        text='Edit User'
                         disabled={this.state.buttonDisabled}
                         onClick={ () => this.editUser() }
                         /> 
                         </td>
-                        <td>
-                        <SubmitButton
-                        text='Find User'
-                        disabled={this.state.buttonDisabled}
-                        onClick={ () => this.deleteUser() }
-                        /> 
-                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 </Jumbotron>

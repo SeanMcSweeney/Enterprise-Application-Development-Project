@@ -53,6 +53,11 @@ class Register extends React.Component{
             return;
         }
 
+        if (this.state.passwordconf != this.state.password){
+            alert("Password must contain at least 1 number, 1 uppercase letter and 1 lowercase letter");
+            return;
+        }
+
         this.setState({
             buttonDisabled: true
         })
@@ -137,6 +142,7 @@ class Register extends React.Component{
                             value={this.state.password ? this.state.password : ''}
                             onChange={ (val) => this.setInputValue('password', val) }
                         />
+                        <p className="othertext2">Password must contain at least 1 number, 1 uppercase letter and 1 lowercase letter</p>
                         <InputField
                             type='password'
                             placeholder='Re-enter Password'

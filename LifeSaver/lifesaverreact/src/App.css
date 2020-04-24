@@ -191,3 +191,12 @@ padding: 200px;
 #btn1{
 width: 1%;
 }
+
+.infobox1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #292a2c;
+  padding: 5%;
+}

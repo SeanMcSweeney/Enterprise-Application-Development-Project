@@ -102,7 +102,7 @@ class App extends React.Component{
     if (UserStore.loading) {
       return (
         <div className="app">
-          <div className="container">
+          <div className="infobox1">
             Loading, please wait.. <Spinner animation="grow" variant="secondary" />
           </div>
         </div>
@@ -174,7 +174,7 @@ class App extends React.Component{
             <div className="app"> 
               <NavbarLogin />
                 <div className="app"> 
-                  <Admin/>
+                  <Info/>
                 </div>
             </div>
           );

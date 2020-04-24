@@ -18,7 +18,7 @@ class Profile extends React.Component{
             buttonDisabled: false
         }
     }
-
+    /* sets inputs*/
     setInputValue(property, val) {
         val = val.trim();
         if (val.length > 20) {
@@ -28,7 +28,7 @@ class Profile extends React.Component{
             [property]: val
         })
     }
-
+    /* resets form */
     resetForm() {
         this.setState({
             passwordold: '',
@@ -37,7 +37,7 @@ class Profile extends React.Component{
             buttonDisabled: false
         })
     }
-
+    /* changes user about me using fetch*/
     async AboutMe(){
         if (!this.state.aboutme) {
             alert("You must enter something about yourself");
@@ -77,7 +77,7 @@ class Profile extends React.Component{
             this.resetForm();
         }
     }
-
+    /* changes user password using fetch*/
     async ChangePassword(){
         if (!this.state.passwordold) {
             alert("You must enter your old password");
