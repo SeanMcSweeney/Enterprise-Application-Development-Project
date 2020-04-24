@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
 import UserStore from './stored/UserStore';
 import PageStore from './stored/PageStore';
-import logo from './images/logo.png';
-import LoginForm from './LoginForm';
 import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
-import { NavDropdown } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
-import { observer } from 'mobx-react';
-import InputField from './InputField';
 import SubmitButton from './SubmitButton';
 
 function Modalfunct(){
@@ -61,6 +54,7 @@ class NavbarLogin extends React.Component{
         if (result && result.success){
             UserStore.isLoggedIn = false;
             UserStore.username = '';
+            window.location.reload();
         }
         }
     
@@ -144,10 +138,10 @@ class NavbarLogin extends React.Component{
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="mr-auto">
-                        <Nav.Link href="#home">HOME</Nav.Link>
-                        <Nav.Link href="#info">INFORMATION</Nav.Link>
-                        <Nav.Link href="#profile">{UserStore.username}'s Profile</Nav.Link>
-                        <Nav.Link href="#admin">Admin</Nav.Link>
+                        <Nav.Link onClick={ () => this.ToHome() } href="#home">HOME</Nav.Link>
+                        <Nav.Link onClick={ () => this.ToInfo() } href="#info">INFORMATION</Nav.Link>
+                        <Nav.Link onClick={ () => this.ToProfile() } href="#profile">{UserStore.username}'s Profile</Nav.Link>
+                        <Nav.Link onClick={ () => this.ToAdmin() } href="#admin">Admin</Nav.Link>
                         </Nav>
                         <Modalfunct />
                         <SubmitButton
@@ -166,9 +160,9 @@ class NavbarLogin extends React.Component{
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="mr-auto">
-                            <Nav.Link href="#home">HOME</Nav.Link>
-                            <Nav.Link href="#info">INFORMATION</Nav.Link>
-                            <Nav.Link href="#profile">{UserStore.username}'s Profile</Nav.Link>
+                            <Nav.Link onClick={ () => this.ToHome() } href="#home">HOME</Nav.Link>
+                            <Nav.Link onClick={ () => this.ToInfo() } href="#info">INFORMATION</Nav.Link>
+                            <Nav.Link onClick={ () => this.ToProfile() } href="#profile">{UserStore.username}'s Profile</Nav.Link>
                             </Nav>
                             <Modalfunct />
                             <SubmitButton

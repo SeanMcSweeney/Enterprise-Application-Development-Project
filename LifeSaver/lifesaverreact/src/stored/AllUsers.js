@@ -4,17 +4,16 @@ import { extendObservable } from 'mobx';
  * User Store
  */
 
-class UserStore {
+class AllUsers {
     constructor(){
         extendObservable(this, {
 
-            loading: true,
-            isLoggedIn: false,
-            admin: false,
             username: '',
+            email: '',
+            admin: '',
             aboutme: ''
 
         })
     }
 }
-export default new UserStore();
+export default new AllUsers();

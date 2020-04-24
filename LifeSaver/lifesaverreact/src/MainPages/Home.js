@@ -1,16 +1,7 @@
-import React, { useState } from 'react';
-import UserStore from '../stored/UserStore';
-import { observer } from 'mobx-react';
-import LoginForm from '../LoginForm';
-import ParticleMaker from '../ParticleMaker';
-import ParticleMaker2 from '../ParticleMaker2';
-import NavbarLogin from '../NavbarLogin';
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SubmitButton from '../SubmitButton';
 
 /* react bootstrap imports */
-import { Button } from 'react-bootstrap';
-import { Modal } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
 import { Carousel } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
@@ -50,7 +41,6 @@ class Home extends React.Component{
         <div className="home">
             <img src={title} alt="title" width="100%"></img>
             <div className="homebox1">
-                
                 <Jumbotron>
                     <h2 className="Title2">LifeSaverVR</h2>
                     <p className="heading">Final Year Project TUD DT211C</p>

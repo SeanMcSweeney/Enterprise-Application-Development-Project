@@ -43,6 +43,18 @@ class App extends React.Component{
         UserStore.loading = false;
         UserStore.isLoggedIn = true;
         UserStore.username = result.username;
+        UserStore.aboutme = result.aboutme;
+        if (result.admin == "yes"){
+          console.log(result.admin);
+          UserStore.admin = true;
+          PageStore.admin = true;
+
+        }
+        else{
+          console.log(result.admin);
+          UserStore.admin = false;
+          PageStore.admin = false;
+        }
       }
 
       else {
@@ -76,6 +88,7 @@ class App extends React.Component{
       if (result && result.success){
         UserStore.isLoggedIn = false;
         UserStore.username = '';
+        window.location.reload();
       }
       
     }
@@ -134,7 +147,7 @@ class App extends React.Component{
 
         if (PageStore.profile) {
           return (
-            <div className="app"> 
+            <div className="wrapper"> 
               <NavbarLogin />
                 <div className="app"> 
                   <Profile/>
@@ -147,7 +160,7 @@ class App extends React.Component{
       else{   
         if (PageStore.home) {
           return (
-            <div className="app"> 
+            <div className="wrapper"> 
               <NavbarLogin />
                 <div className="app"> 
                   <Home/>
@@ -161,7 +174,7 @@ class App extends React.Component{
             <div className="app"> 
               <NavbarLogin />
                 <div className="app"> 
-                  <Info/>
+                  <Admin/>
                 </div>
             </div>
           );
@@ -169,7 +182,7 @@ class App extends React.Component{
 
         if (PageStore.login) {
           return (
-            <div className="app"> 
+            <div className="wrapper"> 
               <NavbarLogin />
                 <div className="app"> 
                   <LoginForm/>
@@ -180,7 +193,7 @@ class App extends React.Component{
 
         if (PageStore.register) {
           return (
-            <div className="app"> 
+            <div className="wrapper"> 
               <NavbarLogin />
                 <div className="app"> 
                   <Register/>

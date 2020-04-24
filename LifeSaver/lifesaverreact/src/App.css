@@ -3,7 +3,8 @@ body, html, #root, .app, .container .homebox1 .login {
   height: 100%;
 }
 
-body{
+.inputwidth{
+padding: 200px;
 }
 
 .homebox1{
@@ -13,6 +14,10 @@ body{
   justify-content: center;
   background-color: #292a2c;
   padding: 5%;
+}
+
+.admin{
+  background-color: #292a2c;
 }
 
 .container {
@@ -25,10 +30,58 @@ body{
   background-color: #292a2c;
 }
 
+.container3 {
+  font-size: 28px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  background-color: #292a2c;
+  padding-left: 40%;
+  padding-right: 40%;
+}
+
+.container2 {
+  font-size: 28px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  background-color: #292a2c;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.wrapper{
+  background-color: #292a2c;
+  width: 100%;
+  height: 100%;
+}
+
+.loginform {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.edit{
+  cursor: pointer;
+}
+
+.registerform {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
 .login {
   position: fixed;
   box-sizing: border-box;
   width: 100%;
+  height: 100%;
   max-width: 400px;
   padding-left: 20px;
   padding-right: 20px;
@@ -86,6 +139,12 @@ body{
 .othertext{
   font-size: 1.2vw;
 }
+
+.othertext2{
+  font-size: 0.6vw;
+  color:#ffffff;
+}
+
 
 .imgslider{
   width: 100%;
